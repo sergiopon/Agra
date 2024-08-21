@@ -1,0 +1,28 @@
+D - Problem D
+Source file name: minning.cpp
+Time limit: 1 second
+
+A mining base needs to build some robots to collect at least 10000 units of resource. Each robot will start from the
+base, reach the diggings in S minutes, work for W minutes, and then take C units of resource back to the base in S
+minutes.
+To speed up this procedure, K robots will be built at the base. It takes M minutes to produce one robot. A robot will be
+set to start working immediately after it is built, and producing the next robot will be on line right after. This procedure
+continues untill all the robots are built.
+Due to the limitation of the mining equipments, there can be only one robot digging at the working area. That is, it is only
+after the currently working robot finishes its collecting work and starts getting back to the base that the next robot can work
+at the diggings.
+Now it is your job to write a program to simulate this procedure, and find out how many minutes it will take to collect at
+least 10000 units of resource.
+Input
+There are several lines of input. Each line contains a test case which consists of 5 integers, namely S , W, C, K, and
+M.
+The input must be read from standard input.
+Output
+For each test case, you are asked to output an integer t, which is the number of minutes taken to collect at least 10000 units
+of resource.
+The output must be written to standard output.
+Sample Input
+10 20 10 1 5
+
+Sample Output
+40005
