@@ -1,3 +1,9 @@
+"""
+Nombre: Sergio Ponce Asprilla
+Codigo: 895569
+Curso: Árboles y Grafos
+Septiembre 2024
+"""
 from collections import deque
 
 def contar_gemas_seguras(mapa, inicio):

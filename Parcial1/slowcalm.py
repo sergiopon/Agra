@@ -1,40 +1,56 @@
+"""
+Nombre: Sergio Ponce Asprilla
+Codigo: 895569
+Curso: Árboles y Grafos
+Septiembre 2024
+"""
+
+
 import sys
 
-def time_for_y(y, segments):
-    total_time = 0
-    for d, s in segments:
+def calcular_tiempo_total(y, segmentos):
+    tiempo_total = 0
+    for d, s in segmentos:
         if s + y <= 0:
-            return float('inf')
-        total_time += d / (s + y)
-    return total_time
-
-def find_y(n, T, segments):
-    low, high = -1000, 1000
-    while high - low > 1e-7:
-        mid = (low + high) / 2
-        if time_for_y(mid, segments) > T:
-            low = mid
+            tiempo_total = float('inf')
         else:
-            high = mid
-    return high
+            tiempo_total += d / (s + y)
+    return tiempo_total
 
-input = sys.stdin.read
-data = input().split()
+def encontrar_y(T, segmentos):
+    bajo, alto = -10000, 10000
+    epsilon = 1e-7
 
-index = 0
-results = []
-while index < len(data):
-    n = int(data[index])
-    T = int(data[index + 1])
-    index += 2
-    segments = []
-    for _ in range(n):
-        d = int(data[index])
-        s = int(data[index + 1])
-        segments.append((d, s))
-        index += 2
-    y = find_y(n, T, segments)
-    results.append(f"{y:.6f}")
+    while alto - bajo > epsilon:
+        medio = (bajo + alto) / 2
+        tiempo_total = calcular_tiempo_total(medio, segmentos)
+        if tiempo_total > T:
+            bajo = medio
+        else:
+            alto = medio
 
-for result in results:
-    print(result)
+    y = (bajo + alto) / 2
+    return y
+
+def main():
+    input = sys.stdin.read
+    datos = input().strip().split()
+    
+    indice = 0
+    while indice < len(datos):
+        n = int(datos[indice])
+        T = int(datos[indice + 1])
+        indice += 2
+        
+        segmentos = []
+        for _ in range(n):
+            d = int(datos[indice])
+            s = int(datos[indice + 1])
+            segmentos.append((d, s))
+            indice += 2
+        
+        y = encontrar_y(n, T, segmentos)
+        print(f"{y:.6f}")
+
+if __name__ == "__main__":
+    main()
